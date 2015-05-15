@@ -1,0 +1,41 @@
+html {
+  height: 100%;
+  box-sizing:border-box;
+}
+header {
+  padding: .5em;
+  color: #47485A;
+  font-size: 2em;
+  font-weight: 700;
+  font-family: helvtica;
+}
+body {
+  background-color: #FFF1CA;
+  box-sizing: border-box;
+  height: 98%;
+  border: 5px double #47485A;
+}
+.game-container {
+  margin: auto;
+  height: 600px;
+  width: 70%;
+  text-align:center;
+}
+.wordfield {
+  border: 5px solid #A3CBF4;
+  height: 15%;
+  background-color: #e6a480;
+}
+
+.guess {
+  margin: 1em;
+  padding: 1em;
+  font-size: 1em;
+  border-radius: .5em;
+  width: 30%;
+}
+button {
+  padding: 1em;
+  font-size: 1em;
+  border-radius: .5em;
+}
