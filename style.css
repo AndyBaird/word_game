@@ -25,6 +25,8 @@ body {
   border: 5px solid #A3CBF4;
   height: 15%;
   background-color: #e6a480;
+  font-size: 5em;
+  letter-spacing: .5em;
 }
 
 .guess {
