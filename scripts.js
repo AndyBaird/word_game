@@ -35,17 +35,7 @@ cleanArray();
 //generate random word
 var randomWord = arrCleanWords[Math.floor(Math.random()*arrCleanWords.length)];
 console.log(randomWord);
-    ///////Below is the far more complicated way of approaching it...
-    /*function random(){
-       var num = Math.floor((Math.random()*cleanArray().length));
-       console.log(num);
-       var randomWord = arrCleanWords.splice(num);
-       console.log (randomWord);
-      }
 
-    random();*/////////
-
-//splits random word into array of letters
 var wordArray = randomWord.split("");
 console.log(wordArray);
 
@@ -79,7 +69,7 @@ btn.addEventListener('click', function compare () {
        var position = wordArray.indexOf(input);
        console.log(position);
          (arrBlank.splice(position, 1, input));
-         wordArray.splice(position, 1, '');//replaces the matched letter with ''
+         wordArray.splice(position, 1, '$');//replaces the matched letter with ''
       document.querySelector('.wordfield').textContent = arrBlank;
       document.querySelector('.wordfield').textContent = arrBlank.join('');
     }
@@ -88,9 +78,9 @@ btn.addEventListener('click', function compare () {
     document.querySelector(".letter").focus();
 
   }
-
-
-    if (randomWord == arrBlank.join('')) {alert("you win");
+    if (randomWord == arrBlank.join('')) {
+    document.querySelector('.wordfield').textContent = "You WIN";
+    document.querySelector('.reload').className = "block";
     }
 });
 
@@ -103,6 +93,8 @@ btn.addEventListener('click', function life () {
   var lifeCount = document.querySelector(".life-count");
   lifeCount.textContent = arrNum -1;
     if (lifeCount.textContent === "0"){
-    document.querySelector('h1').textContent = "You Lose";
+    document.querySelector('.wordfield').textContent = "You Lose";
+    document.querySelector('.reload').className = "block";
+    lifeCount.textContent = "try again!";
     }
 });
