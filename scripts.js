@@ -1,4 +1,5 @@
 
+
 //Global variable definitions
 var randomWord = [];
 var arrCleanWords =[];
@@ -47,63 +48,61 @@ console.log(randomWord);
 //splits random word into array of letters
 var wordArray = randomWord.split("");
 console.log(wordArray);
+
 var arrBlank = [];
 
 //generate dashes per length of random word//
 for (var i=0; i < wordArray.length; i++) {
   arrBlank.push('_');
 }
-arrDashClean = arrBlank.join([separator = '']);
-console.log(arrDashClean);
 
 //adds dashes to wordfield
-document.querySelector('.wordfield').textContent = arrDashClean;
+document.querySelector('.wordfield').textContent = arrBlank.join('');
 
 //new global variables
 var userLetter = document.querySelector('input').value;
 var btn = document.querySelector("button");
+var totalDisplay = [];
 
 //function to add user's guess to UI
 btn.addEventListener('click', function displayGuess () {
-  var input = document.querySelector('input[class=letter]');
-  var display = [input.value];
-  document.querySelector('h1').textContent = display;
-
+  var input = document.querySelector('input[class=letter]').value;
+  totalDisplay.push(input);
+  document.querySelector('h1').textContent = totalDisplay.join(' ');
 });
 
 //function to compare guess with array
 btn.addEventListener('click', function compare () {
  var input = document.querySelector('input[class=letter]').value;
-
   for (var i = 0; i < wordArray.length; i++) {
     if (input === wordArray[i]){
        var position = wordArray.indexOf(input);
        console.log(position);
-         (arrWordField.splice(position, 0, input));
-         wordArray.splice(position, 1, ''); //this line replaces the matched letter with '' so it cannot be matched again.
-
-      //removes commas from array of correct guesses
-      var arrCorrect= [];
-      arrCorrect = arrWordField.join('');
-      console.log (arrCorrect);
-
-      //adds word to wordfield
-document.querySelector(".output").innerHTML = arrCorrect;
-
-   }
-  document.querySelector('input[class=letter]').value = '';
+         (arrBlank.splice(position, 1, input));
+         wordArray.splice(position, 1, '');//replaces the matched letter with ''
+      document.querySelector('.wordfield').textContent = arrBlank;
+      document.querySelector('.wordfield').textContent = arrBlank.join('');
+    }
+  //removes guess from input field
+    document.querySelector('input[class=letter]').value = '';
+    document.querySelector(".letter").focus();
 
   }
+
+
+    if (randomWord == arrBlank.join('')) {alert("you win");
+    }
 });
 
+//take away a life
 
+document.querySelector(".life-count").textContent = 8;
 
-
-//push the arrWordField onto the HTML
-//var output = document.querySelector('.output');
-//output.push(arrWordField.value);
-//
-
-    //use this for taking out 1 life.
-    /*  else if(input != wordArray[i]){
-        arrWrongLetter.push(input);*/
+btn.addEventListener('click', function life () {
+  var arrNum = document.querySelector(".life-count").textContent;
+  var lifeCount = document.querySelector(".life-count");
+  lifeCount.textContent = arrNum -1;
+    if (lifeCount.textContent === "0"){
+    document.querySelector('h1').textContent = "You Lose";
+    }
+});

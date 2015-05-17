@@ -12,8 +12,9 @@ header {
 body {
   background-color: #FFF1CA;
   box-sizing: border-box;
-  height: 98%;
+  height: 90%;
   border: 5px double #47485A;
+  margin: 2em;
 }
 .game-container {
   margin: auto;
@@ -26,14 +27,13 @@ body {
   height: 15%;
   background-color: #e6a480;
   font-size: 5em;
-  letter-spacing: .5em;
+  letter-spacing: 0.5em;
 }
-
 .guess {
   margin: 1em;
   padding: 1em;
   font-size: 1em;
-  border-radius: .5em;
+  border-radius: 0.5em;
   width: 30%;
 }
 button {
